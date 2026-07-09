@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sta-Sof-Fro — Project Plan | Algorithm</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0A0F1A;
+  --navy-mid:#131D2E;
+  --blue:#2E7CF6;
+  --blue-soft:#5B9BFF;
+  --green:#16A36A;
+  --green-soft:#3FD68C;
+  --amber:#E08A2C;
+  --red:#DC3545;
+  --ink:#13182A;
+  --grey:#5B6478;
+  --grey-soft:#8A93A6;
+  --rule:#E4E8F0;
+  --bg:#F3F5F9;
+  --white:#FFFFFF;
+  --sidebar:260px;
+}
+
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6;}
+
+/* ── Layout ── */
+.layout{display:flex;min-height:100vh;}
+.sidebar{
+  width:var(--sidebar);
+  background:var(--navy);
+  position:fixed;top:0;left:0;bottom:0;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+  z-index:100;
+}
+.main{margin-left:var(--sidebar);flex:1;padding:48px 48px 80px;}
+
+/* ── Sidebar ── */
+.sb-brand{padding:28px 24px 20px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.sb-logo{font-size:18px;font-weight:800;color:var(--blue-soft);}
+.sb-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#7B8499;margin-top:3px;}
+.sb-doc{padding:16px 24px 12px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.sb-doc-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;color:#7B8499;text-transform:uppercase;margin-bottom:4px;}
+.sb-doc-title{font-size:11.5px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.4;}
+.sb-nav{padding:16px 12px;flex:1;}
+.sb-nav-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.12em;color:#7B8499;text-transform:uppercase;padding:0 12px;margin-bottom:8px;}
+.sb-nav a{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:8px;
+  font-size:12.5px;color:rgba(255,255,255,0.55);
+  text-decoration:none;transition:all 0.15s;
+  margin-bottom:2px;
+}
+.sb-nav a:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);}
+.sb-nav a.active{background:rgba(46,124,246,0.15);color:var(--blue-soft);}
+.sb-nav a .num{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.4);
+  flex-shrink:0;transition:all 0.15s;
+}
+.sb-nav a.active .num{background:var(--blue);color:var(--white);}
+.sb-meta{padding:16px 24px;border-top:1px solid rgba(255,255,255,0.08);}
+.sb-meta p{font-size:11px;color:#7B8499;line-height:1.5;}
+.sb-meta strong{color:rgba(255,255,255,0.5);font-weight:500;}
+
+/* ── Page header ── */
+.page-header{margin-bottom:48px;}
+.page-header-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.1em;
+  color:var(--blue-soft);background:rgba(46,124,246,0.1);
+  border:1px solid rgba(46,124,246,0.25);padding:5px 12px;border-radius:20px;
+  margin-bottom:16px;
+}
+.page-header-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue-soft);}
+.page-header h1{font-size:32px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:10px;}
+.page-header p{font-size:15px;color:var(--grey);max-width:580px;line-height:1.65;}
+.page-header-meta{display:flex;gap:24px;margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);flex-wrap:wrap;}
+.meta-item .label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-soft);margin-bottom:3px;}
+.meta-item .value{font-size:13px;font-weight:600;color:var(--ink);}
+
+/* ── Section ── */
+.section{margin-bottom:56px;scroll-margin-top:32px;}
+.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--blue);text-transform:uppercase;margin-bottom:6px;}
+.section h2{font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-bottom:6px;}
+.section-intro{font-size:14px;color:var(--grey);margin-bottom:24px;max-width:640px;line-height:1.65;}
+
+/* ── Cards ── */
+.card{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+
+/* ── Stat cards ── */
+.stat-card{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:18px 20px;}
+.stat-card .stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-soft);margin-bottom:8px;}
+.stat-card .stat-val{font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;line-height:1;}
+.stat-card .stat-note{font-size:12px;color:var(--grey);margin-top:5px;}
+.stat-card.blue .stat-val{color:var(--blue);}
+.stat-card.green .stat-val{color:var(--green);}
+.stat-card.amber .stat-val{color:var(--amber);}
+
+/* ── Team cards ── */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.team-card{border-radius:12px;border:1px solid var(--rule);padding:18px 20px;}
+.team-card.lead{border-color:rgba(46,124,246,0.3);background:rgba(46,124,246,0.03);}
+.team-card.support{border-color:rgba(22,163,106,0.3);background:rgba(22,163,106,0.03);}
+.team-card.external{border-color:rgba(224,138,44,0.3);background:rgba(224,138,44,0.03);grid-column:1/-1;}
+.team-role-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:3px 8px;border-radius:8px;margin-bottom:10px;}
+.team-card.lead .team-role-badge{background:rgba(46,124,246,0.1);color:var(--blue);}
+.team-card.support .team-role-badge{background:rgba(22,163,106,0.1);color:var(--green);}
+.team-card.external .team-role-badge{background:rgba(224,138,44,0.1);color:var(--amber);}
+.team-name{font-size:16px;font-weight:800;margin-bottom:12px;}
+.team-list{list-style:none;padding:0;}
+.team-list li{font-size:13px;color:var(--grey);margin-bottom:5px;padding-left:14px;position:relative;line-height:1.45;}
+.team-list li::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;}
+.team-card.lead .team-list li::before{background:var(--blue);}
+.team-card.support .team-list li::before{background:var(--green);}
+.team-card.external .team-list li::before{background:var(--amber);}
+
+/* ── Phase timeline ── */
+.timeline{position:relative;padding-left:40px;}
+.timeline::before{content:'';position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--green));border-radius:2px;}
+.phase-item{position:relative;margin-bottom:24px;}
+.phase-item:last-child{margin-bottom:0;}
+.phase-node{
+  position:absolute;left:-40px;top:14px;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--white);border:2px solid var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);
+  z-index:1;
+}
+.phase-item.phase-seo .phase-node,.phase-item.phase-qa .phase-node,.phase-item.phase-retainer .phase-node{border-color:var(--green);color:var(--green);}
+.phase-card{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;}
+.phase-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.phase-title{font-size:14px;font-weight:700;}
+.phase-week{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--grey-soft);background:var(--bg);padding:3px 8px;border-radius:6px;}
+.phase-tasks{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.phase-task{font-size:11.5px;background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:3px 9px;color:var(--grey);}
+.phase-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--rule);}
+.phase-owner{font-size:12px;color:var(--grey-soft);}
+.phase-owner strong{color:var(--ink);font-weight:600;}
+.milestone-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;background:rgba(46,124,246,0.1);color:var(--blue);border:1px solid rgba(46,124,246,0.2);padding:3px 10px;border-radius:8px;}
+.milestone-tag.green{background:rgba(22,163,106,0.1);color:var(--green);border-color:rgba(22,163,106,0.2);}
+.milestone-tag.amber{background:rgba(224,138,44,0.1);color:var(--amber);border-color:rgba(224,138,44,0.2);}
+
+/* ── Callouts ── */
+.callout{border-radius:12px;padding:16px 20px;margin-bottom:16px;}
+.callout.blue{background:#EFF5FF;border:1px solid #CFE1FB;}
+.callout.blue h3{color:var(--blue);}
+.callout.dark{background:var(--navy);color:var(--white);}
+.callout.dark h3{color:var(--blue-soft);}
+.callout.dark p{color:#C5CCDC;}
+.callout.amber{background:#FFF6EA;border:1px solid #F3D9A8;}
+.callout.amber h3{color:var(--amber);}
+.callout.amber p{color:#5C4317;}
+.callout h3{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.callout p{font-size:13px;line-height:1.6;margin-bottom:6px;}
+.callout p:last-child{margin-bottom:0;}
+.callout p strong{color:inherit;font-weight:700;}
+
+/* ── Revision two-col ── */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.rev-card{border-radius:10px;padding:16px 18px;border:1px solid var(--rule);}
+.rev-card.included{background:rgba(22,163,106,0.04);border-color:rgba(22,163,106,0.25);}
+.rev-card.excluded{background:rgba(224,138,44,0.04);border-color:rgba(224,138,44,0.25);}
+.rev-card h3{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+.rev-card.included h3{color:var(--green);}
+.rev-card.excluded h3{color:var(--amber);}
+.rev-card ul{list-style:none;padding:0;}
+.rev-card ul li{font-size:13px;color:var(--grey);margin-bottom:5px;padding-left:14px;position:relative;line-height:1.45;}
+.rev-card ul li::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;}
+.rev-card.included ul li::before{background:var(--green);}
+.rev-card.excluded ul li::before{background:var(--amber);}
+.rev-small{font-size:11.5px;color:var(--grey-soft);margin-top:8px;}
+
+/* ── Hour bar ── */
+.hour-bar{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:18px 20px;margin-bottom:14px;}
+.hour-bar-title{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-soft);margin-bottom:14px;}
+.hour-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--rule);}
+.hour-row:last-child{border-bottom:none;font-weight:700;}
+.hour-row .task{font-size:13px;color:var(--ink);}
+.hour-row .hrs{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);font-weight:700;}
+.hour-row:last-child .hrs{color:var(--blue);}
+
+/* ── Retainer tiers ── */
+.tier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
+.tier{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;}
+.tier.reco{border:1.5px solid var(--blue);background:rgba(46,124,246,0.03);}
+.tier .t-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;}
+.tier .t-name{font-size:14px;font-weight:800;}
+.tier .t-price{font-size:19px;font-weight:800;margin-top:6px;}
+.tier .t-price span{font-size:11px;font-weight:400;color:var(--grey-soft);}
+.tier .t-price-note{font-size:10px;color:var(--grey-soft);font-family:'JetBrains Mono',monospace;margin-bottom:8px;}
+.tier .t-hrs{font-size:11px;color:var(--blue);font-weight:700;}
+
+/* ── Risk table ── */
+.risk-table{background:var(--white);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.risk-head{display:grid;grid-template-columns:36px 1fr 100px 80px;gap:12px;padding:10px 18px;background:var(--bg);border-bottom:1px solid var(--rule);}
+.risk-head span{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey-soft);}
+.risk-row-wrap{border-bottom:1px solid var(--rule);}
+.risk-row-wrap:last-child{border-bottom:none;}
+.risk-row{display:grid;grid-template-columns:36px 1fr 100px 80px;gap:12px;padding:14px 18px;align-items:start;}
+.risk-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--grey-soft);padding-top:2px;}
+.risk-content .risk-title{font-size:13px;font-weight:700;margin-bottom:3px;}
+.risk-content .risk-desc{font-size:12px;color:var(--grey);line-height:1.5;}
+.risk-content .risk-desc strong{color:var(--red);font-weight:600;}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.05em;padding:3px 9px;border-radius:20px;}
+.pill.high{background:rgba(220,53,69,0.1);color:var(--red);border:1px solid rgba(220,53,69,0.2);}
+.pill.medium{background:rgba(224,138,44,0.1);color:var(--amber);border:1px solid rgba(224,138,44,0.2);}
+.pill.low{background:rgba(22,163,106,0.1);color:var(--green);border:1px solid rgba(22,163,106,0.2);}
+.risk-owner-name{font-size:12px;color:var(--grey);padding-top:2px;}
+
+/* ── Framework checklist ── */
+.fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.fw-card{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:18px 20px;}
+.fw-card h3{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+.fw-list{list-style:none;padding:0;}
+.fw-list li{font-size:13px;color:var(--grey);margin-bottom:5px;padding-left:20px;position:relative;line-height:1.45;}
+.fw-list li::before{content:'☐';position:absolute;left:0;color:var(--rule);font-size:13px;line-height:1;}
+.fw-list.check li::before{content:'';width:12px;height:12px;border:1.5px solid var(--rule);border-radius:3px;background:var(--white);top:3px;}
+.fw-list.dot li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);top:7px;}
+
+/* ── Weekly plan ── */
+.week-grid{display:grid;grid-template-columns:80px 1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.week-col-head{padding:10px 14px;background:var(--navy);font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.week-col-head.label{color:#7B8499;}
+.week-col-head.ashlin{color:var(--blue-soft);}
+.week-col-head.luke{color:var(--green-soft);}
+.week-row{display:contents;}
+.week-row > div{padding:12px 14px;border-top:1px solid var(--rule);vertical-align:top;}
+.week-row:first-of-type > div{border-top:none;}
+.week-label{background:#FAFBFD;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--grey);display:flex;align-items:flex-start;padding-top:14px;}
+.week-tasks{background:var(--white);}
+.week-tasks.luke-col{background:#FAFFFE;}
+.week-task-item{font-size:12.5px;color:var(--ink);margin-bottom:5px;padding-left:14px;position:relative;line-height:1.45;}
+.week-task-item:last-child{margin-bottom:0;}
+.week-task-item::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;}
+.week-tasks:not(.luke-col) .week-task-item::before{background:var(--blue);}
+.week-tasks.luke-col .week-task-item::before{background:var(--green);}
+.week-task-item.milestone{font-weight:600;color:var(--blue);}
+.week-task-item.milestone::before{background:var(--blue);}
+.week-task-item.dep{color:var(--amber);}
+.week-task-item.dep::before{background:var(--amber);}
+.week-task-item small{font-size:10.5px;color:var(--grey-soft);display:block;margin-top:1px;}
+
+/* ── Task board ── */
+.taskboard-section{margin-bottom:20px;}
+.taskboard-head{display:grid;grid-template-columns:1fr 90px 90px 120px;gap:12px;padding:9px 14px;background:var(--navy);border-radius:10px 10px 0 0;}
+.taskboard-head span{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#7B8499;}
+.taskboard-body{border:1px solid var(--rule);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;}
+.task-row{display:grid;grid-template-columns:1fr 90px 90px 120px;gap:12px;padding:11px 14px;border-bottom:1px solid var(--rule);align-items:start;}
+.task-row:last-child{border-bottom:none;}
+.task-row:hover{background:#FAFBFD;}
+.task-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.task-note{font-size:11.5px;color:var(--grey);line-height:1.4;}
+.task-note.dep-note{color:var(--amber);}
+.owner-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;}
+.owner-ashlin{background:rgba(46,124,246,0.1);color:var(--blue);}
+.owner-luke{background:rgba(22,163,106,0.1);color:var(--green);}
+.owner-both{background:rgba(91,155,255,0.1);color:var(--blue-soft);}
+.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;}
+.status-todo{background:#F3F5F9;color:var(--grey-soft);border:1px solid var(--rule);}
+.status-blocked{background:rgba(220,53,69,0.1);color:var(--red);border:1px solid rgba(220,53,69,0.2);}
+.status-inprogress{background:rgba(46,124,246,0.1);color:var(--blue);border:1px solid rgba(46,124,246,0.2);}
+.status-done{background:rgba(22,163,106,0.1);color:var(--green);border:1px solid rgba(22,163,106,0.2);}
+.status-badge{transition:all 0.15s;}
+
+/* ── Edit mode toggle ── */
+.edit-toggle{
+  display:flex;align-items:center;gap:8px;
+  margin:12px 24px 0;padding:9px 14px;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;cursor:pointer;transition:all 0.2s;
+}
+.edit-toggle:hover{background:rgba(255,255,255,0.09);}
+.edit-toggle.active{background:rgba(46,124,246,0.18);border-color:rgba(46,124,246,0.4);}
+.edit-toggle-dot{width:8px;height:8px;border-radius:50%;background:#7B8499;flex-shrink:0;transition:background 0.2s;}
+.edit-toggle.active .edit-toggle-dot{background:var(--blue-soft);}
+.edit-toggle-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7B8499;transition:color 0.2s;}
+.edit-toggle.active .edit-toggle-label{color:var(--blue-soft);}
+
+/* ── Password modal ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(10,15,26,0.75);
+  z-index:1000;align-items:center;justify-content:center;
+}
+.modal-overlay.visible{display:flex;}
+.modal-box{
+  background:var(--white);border-radius:14px;padding:28px 32px;
+  width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.modal-box h3{font-size:16px;font-weight:800;margin-bottom:6px;}
+.modal-box p{font-size:13px;color:var(--grey);margin-bottom:18px;line-height:1.55;}
+.modal-input{
+  width:100%;padding:10px 14px;border:1.5px solid var(--rule);border-radius:8px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;
+  transition:border-color 0.15s;margin-bottom:8px;box-sizing:border-box;
+}
+.modal-input:focus{border-color:var(--blue);}
+.modal-input.error{border-color:var(--red);}
+.modal-error{font-size:12px;color:var(--red);margin-bottom:10px;display:none;min-height:16px;}
+.modal-error.visible{display:block;}
+.modal-btns{display:flex;gap:8px;}
+.modal-btn{
+  flex:1;padding:9px;border-radius:8px;font-size:13px;font-weight:600;
+  cursor:pointer;border:none;transition:all 0.15s;
+}
+.modal-btn.primary{background:var(--blue);color:var(--white);}
+.modal-btn.primary:hover{background:#1a6be0;}
+.modal-btn.secondary{background:var(--bg);color:var(--grey);border:1px solid var(--rule);}
+
+/* ── Last updated bar ── */
+.last-updated-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 14px;background:#FAFBFD;border:1px solid var(--rule);
+  border-radius:8px;margin-bottom:14px;font-size:12px;color:var(--grey-soft);
+}
+.last-updated-bar strong{color:var(--ink);font-weight:600;}
+
+/* ── Phase node states ── */
+.phase-node.phase-complete{background:var(--green);border-color:var(--green);color:var(--white);}
+.phase-node.phase-active{
+  background:var(--blue);border-color:var(--blue);color:var(--white);
+  box-shadow:0 0 0 4px rgba(46,124,246,0.18);
+  animation:pulse-node 2s infinite;
+}
+.phase-node.phase-upcoming{background:var(--white);border-color:var(--rule);color:var(--grey-soft);}
+@keyframes pulse-node{
+  0%,100%{box-shadow:0 0 0 4px rgba(46,124,246,0.18);}
+  50%{box-shadow:0 0 0 8px rgba(46,124,246,0.06);}
+}
+.edit-mode .phase-node{cursor:pointer;transition:transform 0.15s;}
+.edit-mode .phase-node:hover{transform:scale(1.15);}
+.edit-mode .status-badge{cursor:pointer;user-select:none;}
+.edit-mode .status-badge:hover{opacity:0.8;}
+
+@media(max-width:900px){
+  .week-grid{grid-template-columns:60px 1fr;}
+  .week-col-head.luke,.week-tasks.luke-col{display:none;}
+  .taskboard-head,.task-row{grid-template-columns:1fr 80px 80px;}
+  .taskboard-head span:last-child,.task-row > div:last-child{display:none;}
+}
+@media(max-width:900px){
+  .sidebar{display:none;}
+  .main{margin-left:0;padding:28px 20px 60px;}
+  .grid-2,.team-grid,.rev-grid,.fw-grid,.tier-grid{grid-template-columns:1fr;}
+  .team-card.external{grid-column:auto;}
+  .risk-head,.risk-row{grid-template-columns:32px 1fr 80px;}
+  .risk-head span:last-child,.risk-owner-name{display:none;}
+  .grid-3{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo">Algorithm</div>
+      <div class="sb-tag">TURN POTENTIAL INTO PERFORMANCE</div>
+    </div>
+    <div class="sb-doc">
+      <div class="sb-doc-label">Document</div>
+      <div class="sb-doc-title">Sta-Sof-Fro — Project Plan</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-nav-label">Sections</div>
+      <a href="#overview" class="active"><span class="num">1</span>Client overview</a>
+      <a href="#team"><span class="num">2</span>Team structure</a>
+      <a href="#delivery"><span class="num">3</span>Delivery phases</a>
+      <a href="#revisions"><span class="num">4</span>Revisions & changes</a>
+      <a href="#retainer"><span class="num">5</span>Retainer add-on</a>
+      <a href="#risks"><span class="num">6</span>How we manage</a>
+      <a href="#framework"><span class="num">7</span>Working with us</a>
+      <a href="#weekly"><span class="num">8</span>Weekly plan</a>
+      <a href="#taskboard"><span class="num">9</span>Task board</a>
+    </nav>
+    <div class="sb-meta">
+      <p><strong>Prepared by</strong><br>Ashlin — Head of Development</p>
+      <p style="margin-top:10px;"><strong>Date</strong><br>July 2026</p>
+      <p style="margin-top:10px;"><strong>Reference</strong><br>SSF-WEB-2026</p>
+      <div class="edit-toggle" id="editToggle" onclick="handleEditToggle()">
+        <div class="edit-toggle-dot"></div>
+        <div class="edit-toggle-label" id="editToggleLabel">Edit mode</div>
+      </div>
+    </div>
+
+    <!-- Password modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <h3>Algorithm access only</h3>
+        <p>Enter the project password to enable edit mode and update task statuses.</p>
+        <input type="password" class="modal-input" id="modalInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkPassword()">
+        <div class="modal-error" id="modalError">Incorrect password. Try again.</div>
+        <div class="modal-btns">
+          <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+          <button class="modal-btn primary" onclick="checkPassword()">Unlock</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- Header -->
+    <div class="page-header">
+      <div class="page-header-eyebrow">Project Plan &middot; Sta-Sof-Fro (SSF)</div>
+      <h1>Sta-Sof-Fro<br>Project Plan</h1>
+      <p>Everything you need to know about how we will deliver your website, who is working on it, what happens each week, and what to expect from us throughout.</p>
+      <div class="page-header-meta">
+        <div class="meta-item"><div class="label">Prepared by</div><div class="value">Ashlin — Head of Development</div></div>
+        <div class="meta-item"><div class="label">Date</div><div class="value">July 2026</div></div>
+        <div class="meta-item"><div class="label">Reference</div><div class="value">SSF-WEB-2026</div></div>
+        <div class="meta-item"><div class="label">Client</div><div class="value">Sta-Sof-Fro (SSF)</div></div>
+      </div>
+    </div>
+
+    <!-- ── Section 1: Client overview ── -->
+    <section class="section" id="overview">
+      <div class="section-eyebrow">Section 01 &middot; Your Project</div>
+      <h2>What we are building for you</h2>
+      <p class="section-intro">A fully custom 6-page WordPress website for Sta-Sof-Fro — no premium base theme, built from your approved Figma designs. This project covers the website build only. A monthly development retainer is available afterwards as an optional add-on, but is not part of this project or its pricing.</p>
+
+      <div class="grid-3">
+        <div class="stat-card blue">
+          <div class="stat-label">Once-off project</div>
+          <div class="stat-val">R92,500</div>
+          <div class="stat-note">Excl. VAT &middot; 5 line items</div>
+        </div>
+        <div class="stat-card amber">
+          <div class="stat-label">Retainer add-on</div>
+          <div class="stat-val">From R3,500</div>
+          <div class="stat-note">Optional &middot; not yet confirmed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pages</div>
+          <div class="stat-val">6</div>
+          <div class="stat-note">Home, About, Products, Product Detail, Hair Care, Blog</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Why a custom build</h3>
+          <p style="font-size:13px;color:var(--grey);line-height:1.6;">No premium base theme — the theme is built from scratch to match your brand identity and approved Figma designs precisely. That means no bloated code, no conflicting plugin dependencies, and a site that's fast and easy to maintain going forward.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">What this project delivers</h3>
+          <p style="font-size:13px;color:var(--grey);line-height:1.6;">Full UX/UI design across all 6 pages, a custom WordPress theme, all pages built in Elementor, three CF7 forms with validation and routing, and full QA before go-live. A monthly retainer is available afterwards, entirely optional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 2: Team ── -->
+    <section class="section" id="team">
+      <div class="section-eyebrow">Section 02 &middot; Team Structure</div>
+      <h2>Who does what</h2>
+      <p class="section-intro">Clear ownership from day one. One point of contact for the client, one escalation path internally.</p>
+
+      <div class="team-grid">
+        <div class="team-card lead">
+          <div class="team-role-badge">Lead Developer</div>
+          <div class="team-name">Ashlin</div>
+          <ul class="team-list">
+            <li>All client communication — single point of contact</li>
+            <li>Custom WordPress theme build, CF7 forms, technical QA and launch</li>
+            <li>Project ownership end to end, including milestone sign-off</li>
+            <li>Retainer discussion after launch, if and when relevant</li>
+            <li>Escalation owner for all scope or technical issues</li>
+          </ul>
+        </div>
+        <div class="team-card support">
+          <div class="team-role-badge">Design & CRO/UX Specialist</div>
+          <div class="team-name">Luke</div>
+          <ul class="team-list">
+            <li>UX/UI design across all 6 pages — wireframes, typography system, component library</li>
+            <li>Front-end build: Elementor page builds from approved designs</li>
+            <li>Does not communicate directly with the client</li>
+            <li>All design work reviewed and signed off by Ashlin before it goes to the client</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout blue">
+        <h3>How we approach the build</h3>
+        <p>The website design has been provided by you in Figma. Before development begins, we need final written copy, product and lifestyle photography, and any additional brand assets — the build only starts once these are confirmed as final, so we're not building against placeholder content.</p>
+        <p>The full site is built and QA'd on a staging environment first. Go-live only happens once you've reviewed and signed off the completed build.</p>
+      </div>
+
+      <div class="callout blue">
+        <h3>Your single point of contact</h3>
+        <p>All communication goes through Ashlin directly. You will never be passed between team members or left wondering who to speak to. For any questions, feedback, or concerns — Ashlin is your person.</p>
+      </div>
+
+    </section>
+
+    <!-- ── Section 3: Delivery ── -->
+    <section class="section" id="delivery">
+      <div class="section-eyebrow">Section 03 &middot; Project Delivery</div>
+      <h2>Delivery phases — Sta-Sof-Fro</h2>
+      <p class="section-intro">3 paid phases over 6 weeks. Each phase is invoiced upfront — work does not begin on a phase until it's paid. The site is not deployed or made live until the final invoice is paid in full.</p>
+
+      <div class="timeline">
+
+        <div class="phase-item">
+          <div class="phase-node" data-phase="1" onclick="cyclePhase(this)">1</div>
+          <div class="phase-card">
+            <div class="phase-header">
+              <div class="phase-title">Phase 1 — Design</div>
+              <div class="phase-week">Weeks 1&ndash;2</div>
+            </div>
+            <div class="phase-tasks">
+              <span class="phase-task" style="background:rgba(220,53,69,0.08);border-color:rgba(220,53,69,0.2);color:#DC3545;font-weight:600;">Final copy, photography & brand assets confirmed</span>
+              <span class="phase-task">Figma designs confirmed as final</span>
+              <span class="phase-task">Project kickoff meeting</span>
+              <span class="phase-task">UX/UI design — all 6 pages, mobile + desktop</span>
+              <span class="phase-task">Typography system and component library</span>
+              <span class="phase-task">One revision round included</span>
+            </div>
+            <div class="phase-footer">
+              <div class="phase-owner"><strong>Design:</strong> Luke &nbsp;&middot;&nbsp; <strong>Review &amp; client contact:</strong> Ashlin</div>
+              <div class="milestone-tag">Invoice 1 — R37,000 (40%) due before Phase 1 begins</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-item">
+          <div class="phase-node" data-phase="2" onclick="cyclePhase(this)">2</div>
+          <div class="phase-card">
+            <div class="phase-header">
+              <div class="phase-title">Phase 2 — Build</div>
+              <div class="phase-week">Weeks 3&ndash;5</div>
+            </div>
+            <div class="phase-tasks">
+              <span class="phase-task">Custom WordPress theme built from scratch</span>
+              <span class="phase-task">6 Elementor page builds from approved designs</span>
+              <span class="phase-task">3 CF7 forms — styling, validation, routing logic</span>
+              <span class="phase-task">Blog archive category structure (no posts required at launch)</span>
+              <span class="phase-task">Full site pushed to staging for client review</span>
+              <span class="phase-task">Final approved content confirmed in place</span>
+            </div>
+            <div class="phase-footer">
+              <div class="phase-owner"><strong>Owner:</strong> Ashlin &nbsp;&middot;&nbsp; <strong>Front-end build:</strong> Luke</div>
+              <div class="milestone-tag green">Invoice 2 — R32,375 (35%) due before Phase 2 begins</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-item phase-qa">
+          <div class="phase-node" data-phase="3" onclick="cyclePhase(this)">3</div>
+          <div class="phase-card">
+            <div class="phase-header">
+              <div class="phase-title">Phase 3 — Go-Live</div>
+              <div class="phase-week">Week 6</div>
+            </div>
+            <div class="phase-tasks">
+              <span class="phase-task">Page speed optimisation & WebP compression</span>
+              <span class="phase-task">Sitemap and robots.txt configuration</span>
+              <span class="phase-task">Cross-device and cross-browser QA</span>
+              <span class="phase-task">Staging-to-live deployment</span>
+            </div>
+            <div class="phase-footer">
+              <div class="phase-owner"><strong>Owner:</strong> Ashlin</div>
+              <div class="milestone-tag amber">Invoice 3 — R23,125 (25%) due before go-live — site is not deployed until paid</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-item phase-retainer">
+          <div class="phase-node" data-phase="4" onclick="cyclePhase(this)">4</div>
+          <div class="phase-card">
+            <div class="phase-header">
+              <div class="phase-title">Post-launch — retainer optional</div>
+              <div class="phase-week">Month 1+</div>
+            </div>
+            <div class="phase-tasks">
+              <span class="phase-task">No obligation to take on a retainer</span>
+              <span class="phase-task">We check in once the site is live</span>
+              <span class="phase-task">3 tiers available if you want continued support</span>
+            </div>
+            <div class="phase-footer">
+              <div class="phase-owner"><strong>Owner:</strong> Ashlin</div>
+              <div class="milestone-tag amber">Not yet confirmed — outside the 3 paid phases</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout dark">
+        <h3>Payment &amp; go-live policy</h3>
+        <p>Each of the 3 phases above is invoiced upfront. We do not start work on a phase until that phase's invoice is paid in full, and invoices are never raised retroactively for work already done. This applies to go-live too — the completed site stays on staging until Invoice 3 clears, so there's no scenario where the site goes live before payment is received.</p>
+      </div>
+    </section>
+
+    <!-- ── Section 4: Revisions ── -->
+    <section class="section" id="revisions">
+      <div class="section-eyebrow">Section 04 &middot; Revision & Change Management</div>
+      <h2>Managing scope and changes</h2>
+      <p class="section-intro">1 round of revisions is included per design phase. Everything beyond that is a change request that must be scoped and approved in writing before any work begins.</p>
+
+      <div class="rev-grid">
+        <div class="rev-card included">
+          <h3>Included as a revision</h3>
+          <ul>
+            <li>Layout and spacing adjustments</li>
+            <li>Colour and font changes</li>
+            <li>Copy edits and image swaps</li>
+            <li>CTA placement or wording</li>
+            <li>Minor reordering of existing sections</li>
+          </ul>
+          <p class="rev-small">1 round included. One consolidated feedback list — no drip-feeding.</p>
+        </div>
+        <div class="rev-card excluded">
+          <h3>Treated as new scope</h3>
+          <ul>
+            <li>Change in direction after a round is approved</li>
+            <li>New pages or sections not in the original scope</li>
+            <li>A fundamentally different approach to a page</li>
+            <li>Additional revision rounds beyond the one included</li>
+          </ul>
+          <p class="rev-small">Must be scoped, priced (R750/hr), and approved in writing before any work begins.</p>
+        </div>
+      </div>
+
+      <div class="callout blue">
+        <h3>Change request process</h3>
+        <p>Client raises a request &rarr; Ashlin assesses hours and cost &rarr; Written approval from client before any work starts &rarr; Invoice raised on completion.</p>
+      </div>
+
+      <div class="callout dark">
+        <h3>Communication protocol</h3>
+        <p><strong>Single point of contact:</strong> All client communication goes through Ashlin. Luke does not communicate with the client directly under any circumstances.</p>
+        <p><strong>Response SLA:</strong> 24 business hours for all queries.</p>
+        <p><strong>Scope changes in writing:</strong> No additional work is actioned until the client has confirmed in writing.</p>
+      </div>
+    </section>
+
+    <!-- ── Section 5: Retainer Add-On ── -->
+    <section class="section" id="retainer">
+      <div class="section-eyebrow">Section 05 &middot; Retainer Add-On</div>
+      <h2>Monthly retainer <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;background:rgba(224,138,44,0.1);color:var(--amber);border:1px solid rgba(224,138,44,0.25);padding:3px 10px;border-radius:8px;margin-left:8px;vertical-align:middle;">Not Yet Confirmed</span></h2>
+      <p class="section-intro">Not part of this project or its pricing. Shown here so you know what's available once the site is live, should you want continued support. Billed monthly on a rolling basis with 30 days written notice to cancel. Covers web development and technical site maintenance only — SEO, analytics, and digital marketing are managed by the relevant Algorithm departments.</p>
+
+      <div class="tier-grid">
+        <div class="tier">
+          <div class="t-head"><div class="t-name">Maintain</div></div>
+          <div class="t-price">R 3,500<span>/mo</span></div>
+          <div class="t-price-note">excl. VAT</div>
+          <div class="t-hrs">1 hr dev time / month</div>
+        </div>
+        <div class="tier reco">
+          <div class="t-head"><div class="t-name">Grow</div><span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:rgba(46,124,246,0.1);color:var(--blue);border-radius:8px;padding:2px 8px;">Recommended</span></div>
+          <div class="t-price">R 6,000<span>/mo</span></div>
+          <div class="t-price-note">excl. VAT</div>
+          <div class="t-hrs">4 hrs dev time / month</div>
+        </div>
+        <div class="tier">
+          <div class="t-head"><div class="t-name">Scale</div></div>
+          <div class="t-price">R 9,500<span>/mo</span></div>
+          <div class="t-price-note">excl. VAT</div>
+          <div class="t-hrs">8 hrs dev time / month</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;">How hours would work (if added)</h3>
+          <ul class="fw-list dot">
+            <li>Content updates, bug fixes, new features, layout changes, or page builds</li>
+            <li>Hours logged in real time — no estimates after the fact</li>
+            <li>Unused hours do not roll over to the next month</li>
+            <li>Additional hours beyond the tier allocation available at the tier's rate</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;">If you choose to add this on</h3>
+          <ul class="fw-list dot">
+            <li>Billed on the 1st of each month, in advance</li>
+            <li>30 days written notice required to cancel</li>
+            <li>No partial month refunds</li>
+            <li>All work produced remains your property regardless of retainer status</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout amber">
+        <h3>No obligation</h3>
+        <p>We'll check in once the site is live to see if a retainer makes sense for you. There's no pressure to take one on — it's there if and when you want it.</p>
+      </div>
+    </section>
+
+    <!-- ── Section 6: Risks ── -->
+    <section class="section" id="risks">
+      <div class="section-eyebrow">Section 06 &middot; How We Manage Your Project</div>
+      <h2>Our management commitments</h2>
+      <p class="section-intro">Things we actively manage on every project to make sure your experience is smooth and the outcome is what we agreed.</p>
+
+      <div class="risk-table">
+        <div class="risk-head">
+          <span>#</span><span>Our commitment</span><span>How</span><span>Owner</span>
+        </div>
+        <div class="risk-row-wrap">
+          <div class="risk-row">
+            <div class="risk-num">01</div>
+            <div class="risk-content">
+              <div class="risk-title">We scope carefully and flag early</div>
+              <div class="risk-desc">If at any point during the build we identify that something needs more time than anticipated, we tell you before it affects the timeline — not after. No surprises.</div>
+            </div>
+            <div><span class="pill low">Proactive</span></div>
+            <div class="risk-owner-name">Ashlin</div>
+          </div>
+        </div>
+        <div class="risk-row-wrap">
+          <div class="risk-row">
+            <div class="risk-num">02</div>
+            <div class="risk-content">
+              <div class="risk-title">We test thoroughly before anything goes live</div>
+              <div class="risk-desc">Every page and form is tested across desktop, tablet, and mobile on multiple browsers before you review it on staging. You will never be asked to sign off something that hasn't been through a full QA pass first.</div>
+            </div>
+            <div><span class="pill low">Proactive</span></div>
+            <div class="risk-owner-name">Ashlin</div>
+          </div>
+        </div>
+        <div class="risk-row-wrap">
+          <div class="risk-row">
+            <div class="risk-num">03</div>
+            <div class="risk-content">
+              <div class="risk-title">We don't build against placeholder content</div>
+              <div class="risk-desc">No go-live happens without final approved copy and imagery in place. We'll flag early if assets are outstanding so it doesn't quietly become a launch-day problem.</div>
+            </div>
+            <div><span class="pill low">Proactive</span></div>
+            <div class="risk-owner-name">Ashlin</div>
+          </div>
+        </div>
+        <div class="risk-row-wrap">
+          <div class="risk-row">
+            <div class="risk-num">04</div>
+            <div class="risk-content">
+              <div class="risk-title">Ashlin leads and all critical work is covered</div>
+              <div class="risk-desc">Ashlin owns the project end to end and oversees all work before it reaches you. If anything affects the team during the project, we manage it internally without it becoming your problem.</div>
+            </div>
+            <div><span class="pill low">Proactive</span></div>
+            <div class="risk-owner-name">Ashlin</div>
+          </div>
+        </div>
+        <div class="risk-row-wrap">
+          <div class="risk-row">
+            <div class="risk-num">05</div>
+            <div class="risk-content">
+              <div class="risk-title">We guide you on how to give feedback</div>
+              <div class="risk-desc">Good feedback keeps the project on track. We will guide you through each review point and ask for consolidated feedback rather than piecemeal notes, so every round counts and nothing is revisited unnecessarily.</div>
+            </div>
+            <div><span class="pill low">Proactive</span></div>
+            <div class="risk-owner-name">Ashlin</div>
+          </div>
+        </div>
+        <div class="risk-row-wrap">
+          <div class="risk-row">
+            <div class="risk-num">06</div>
+            <div class="risk-content">
+              <div class="risk-title">We respond within 24 business hours, always</div>
+              <div class="risk-desc">Any question, concern, or request sent to Ashlin will be responded to within one business day.</div>
+            </div>
+            <div><span class="pill low">Committed</span></div>
+            <div class="risk-owner-name">Ashlin</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 7: Framework ── -->
+    <section class="section" id="framework">
+      <div class="section-eyebrow">Section 07 &middot; Working With Us</div>
+      <h2>How to work with us</h2>
+      <p class="section-intro">A few things that make a big difference to how smoothly the project runs. None of this is complicated — it is just how we work best together.</p>
+
+      <div class="fw-grid">
+        <div class="fw-card">
+          <h3>What we need from you to get started</h3>
+          <ul class="fw-list check">
+            <li>Signed quotation and 40% deposit (R37,000)</li>
+            <li>Figma designs confirmed as final</li>
+            <li>Final written copy for all 6 pages</li>
+            <li>Product and lifestyle photography</li>
+            <li>Brand guidelines and logo files</li>
+            <li>Kick-off meeting confirmed</li>
+          </ul>
+        </div>
+        <div class="fw-card">
+          <h3>How to give feedback</h3>
+          <ul class="fw-list dot">
+            <li>We share designs or builds for your review at the end of each phase</li>
+            <li>Send feedback as one consolidated list — not separate emails over several days</li>
+            <li>Be specific: "change the button colour to navy" not "something feels off"</li>
+            <li>1 round of revisions is included per design phase</li>
+            <li>Any new requirements beyond the agreed scope are scoped and quoted separately before we action them</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fw-grid">
+        <div class="fw-card">
+          <h3>How we communicate</h3>
+          <ul class="fw-list dot">
+            <li>All communication goes through Ashlin — one contact, always</li>
+            <li>We respond within 24 business hours to all queries</li>
+            <li>We do not action scope changes without written confirmation from you</li>
+            <li>We flag anything that may affect the timeline before it affects the timeline</li>
+          </ul>
+        </div>
+        <div class="fw-card">
+          <h3>After launch</h3>
+          <ul class="fw-list dot">
+            <li>Your site is fully signed over to you on receipt of final payment</li>
+            <li>A monthly retainer is available afterwards — entirely optional</li>
+            <li>We'll check in post-launch to see if ongoing support makes sense for you</li>
+            <li>No pressure either way</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout dark">
+        <h3>What a successful project looks like from our side</h3>
+        <p>A site that reflects your brand precisely, a client who knows exactly what is happening at every stage, and the option — never the obligation — of ongoing support once you're live. That is what we are building toward.</p>
+      </div>
+    </section>
+
+    <!-- ── Section 8: Weekly Plan ── -->
+    <section class="section" id="weekly">
+      <div class="section-eyebrow">Section 08 &middot; Plan of Action</div>
+      <h2>Weekly plan — 6-week delivery</h2>
+      <p class="section-intro">What Ashlin and Luke are each working on week by week. Actual pacing depends on how quickly assets and feedback come back from your side.</p>
+
+      <div class="week-grid">
+        <div class="week-col-head label">Week</div>
+        <div class="week-col-head ashlin">Ashlin — Dev, QA & oversight</div>
+        <div class="week-col-head luke">Luke — Design & front-end</div>
+
+        <div class="week-row">
+          <div class="week-label">W1</div>
+          <div class="week-tasks">
+            <div class="week-task-item milestone">→ Invoice 1 (40% — R37,000) paid before Phase 1 begins</div>
+            <div class="week-task-item">Confirm Figma designs as final</div>
+            <div class="week-task-item">Collect final copy, photography, brand assets</div>
+            <div class="week-task-item">Project kickoff meeting with client</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Begin UX/UI design — Home & About wireframes</div>
+          </div>
+        </div>
+
+        <div class="week-row">
+          <div class="week-label">W2</div>
+          <div class="week-tasks">
+            <div class="week-task-item">Review and approve design progress before client presentation</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">UX/UI design — Products, Product Detail, Hair Care, Blog Archive</div>
+            <div class="week-task-item">Typography system and component library</div>
+            <div class="week-task-item">One revision round on full design set</div>
+          </div>
+        </div>
+
+        <div class="week-row">
+          <div class="week-label">W3</div>
+          <div class="week-tasks">
+            <div class="week-task-item milestone">→ Invoice 2 (35% — R32,375) paid before Phase 2 begins</div>
+            <div class="week-task-item">Custom WordPress theme build — global styles, header, footer, nav</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Elementor build begins: Home, About</div>
+          </div>
+        </div>
+
+        <div class="week-row">
+          <div class="week-label">W4</div>
+          <div class="week-tasks">
+            <div class="week-task-item">3 CF7 forms — styling, validation, routing logic</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Elementor build: Products, Product Detail, Hair Care, Blog Archive</div>
+            <div class="week-task-item">Blog archive category structure set up</div>
+          </div>
+        </div>
+
+        <div class="week-row">
+          <div class="week-label">W5</div>
+          <div class="week-tasks">
+            <div class="week-task-item">Full site pushed to staging environment</div>
+            <div class="week-task-item">Client review session — collect consolidated feedback</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Cross-browser visual review against approved designs</div>
+            <div class="week-task-item">Fix list from staging review</div>
+          </div>
+        </div>
+
+        <div class="week-row">
+          <div class="week-label">W6</div>
+          <div class="week-tasks">
+            <div class="week-task-item milestone">→ Invoice 3 (25% — R23,125) paid before go-live</div>
+            <div class="week-task-item">Page speed optimisation & WebP compression</div>
+            <div class="week-task-item">Sitemap and robots.txt configuration</div>
+            <div class="week-task-item">Staging-to-live deployment — only once Invoice 3 clears</div>
+            <div class="week-task-item">Retainer conversation — optional, no obligation</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Final cross-device QA on live server post-deployment</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout dark">
+        <h3>Key dependencies to track</h3>
+        <p><strong style="color:var(--white);">Client-supplied assets</strong> — final copy, photography, and brand guidelines must be in by end of week 1. If not received, the design phase (weeks 1–2) is blocked and the timeline shifts.</p>
+        <p><strong style="color:var(--white);">Design approval</strong> — Luke cannot start building until Ashlin has reviewed and approved each design. Design and build cannot run fully in parallel on the same page.</p>
+        <p><strong style="color:var(--white);">Client feedback</strong> — consolidated feedback required within 2 business days of each design share. Drip-fed feedback will push the timeline.</p>
+      </div>
+    </section>
+
+    <!-- ── Section 9: Task Board ── -->
+    <section class="section" id="taskboard">
+      <div class="section-eyebrow">Section 09 &middot; Task Board</div>
+      <h2>All tasks by phase</h2>
+      <p class="section-intro">Every deliverable across the project with owner, current status, and dependency flags. Statuses are updated by Algorithm as work progresses.</p>
+
+      <div class="last-updated-bar">
+        <span>Last updated by Algorithm</span>
+        <strong id="lastUpdatedTime">Not yet updated</strong>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 1 — Design (Discovery & Kickoff) &nbsp; Week 1</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row" style="background:rgba(46,124,246,0.03);">
+            <div><div class="task-name">Invoice 1 paid — R37,000 (40%)</div><div class="task-note">Must clear before any Phase 1 work begins.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-p1" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">None — first task</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Final copy, photography & brand assets</div><div class="task-note">All final content confirmed before design work begins.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-01" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--amber);">Invoice 1 paid</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Figma designs confirmed as final</div><div class="task-note">Sign-off on the reference designs before UX/UI work begins.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-02" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 1 paid</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Form purposes defined</div><div class="task-note">Contact, Trade/Retail Enquiry, General Enquiry — confirmed at kickoff.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-03" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Kickoff meeting</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Project kickoff with client</div><div class="task-note">Confirm scope, timeline, feedback process, and revision rounds.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-04" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 1 paid</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 1 — Design (Design Work) &nbsp; Weeks 1–2</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row">
+            <div><div class="task-name">UX/UI design — all 6 pages</div><div class="task-note">Wireframes and full designs across mobile and desktop. One revision round.</div></div>
+            <div><span class="owner-badge owner-luke">Luke</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-05" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Assets confirmed</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Typography system & component library</div><div class="task-note">Consistent type scale and reusable components across the site.</div></div>
+            <div><span class="owner-badge owner-luke">Luke</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-06" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">With page designs</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Ashlin design review and approval</div><div class="task-note">All designs reviewed before sharing with client. No design goes to client without Ashlin sign-off.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-07" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">After Luke completes design</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 2 — Build (Theme &amp; Pages) &nbsp; Weeks 3–4</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row" style="background:rgba(22,163,106,0.03);">
+            <div><div class="task-name">Invoice 2 paid — R32,375 (35%)</div><div class="task-note">Must clear before any Phase 2 (Build) work begins.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-p2" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Phase 1 design approved</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Custom WordPress theme</div><div class="task-note">Global styles, typography, colour variables, header, footer, navigation — built from scratch.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-08" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 2 paid</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">6 Elementor page builds</div><div class="task-note">Home, About Us, Products Listing, Product Detail, Hair Care & Sustainability, Blog Archive.</div></div>
+            <div><span class="owner-badge owner-luke">Luke</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-09" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Theme complete</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">3 CF7 forms</div><div class="task-note">Custom CSS styling, field validation, and routing logic.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-10" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Form purposes confirmed</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Blog archive category structure</div><div class="task-note">Structure and category framework only — no posts required at launch.</div></div>
+            <div><span class="owner-badge owner-luke">Luke</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-11" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">With page builds</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 2 — Build (Staging) &nbsp; Week 5</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row">
+            <div><div class="task-name">Push full site to staging</div><div class="task-note">Complete build delivered to a staging environment for client review.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-12" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Build complete</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Client review and sign-off</div><div class="task-note">Walk through staging build. Collect final consolidated feedback.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-13" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Staging live</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Final content confirmed in place</div><div class="task-note">No go-live occurs on placeholder content.</div></div>
+            <div><span class="owner-badge owner-both">Both</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-14" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Client review</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 3 — Go-Live &nbsp; Week 6</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row" style="background:rgba(224,138,44,0.05);">
+            <div><div class="task-name">Invoice 3 paid — R23,125 (25%)</div><div class="task-note">Must clear before go-live tasks begin. Site stays on staging until paid.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-p3" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Staging approved by client</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Page speed & WebP compression</div><div class="task-note">Performance tuning across all 6 pages.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-15" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 3 paid</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Sitemap & robots.txt configuration</div><div class="task-note">Technical SEO housekeeping ahead of launch.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-16" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">—</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Cross-device / cross-browser QA</div><div class="task-note">Final pass before go-live.</div></div>
+            <div><span class="owner-badge owner-both">Both</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-17" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">—</span></div>
+          </div>
+          <div class="task-row">
+            <div><div class="task-name">Staging-to-live deployment</div><div class="task-note">Final go-live and sign-off.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-18" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">QA complete & Invoice 3 paid</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 6 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Post-Launch — Retainer Optional &nbsp; Month 1+</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row">
+            <div><div class="task-name">Retainer conversation</div><div class="task-note">Optional check-in on whether ongoing support makes sense. No obligation.</div></div>
+            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-19" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--amber);">Not yet confirmed</span></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+// ── Config ──────────────────────────────────────────────────
+const PASSWORD = 'Algorithm2026';
+const LOCK_AFTER_MINS = 30;
+const STATUS_CYCLE = ['status-todo', 'status-inprogress', 'status-done', 'status-blocked'];
+const STATUS_LABELS = {'status-todo':'To do','status-inprogress':'In progress','status-done':'Done','status-blocked':'Blocked'};
+const PHASE_CYCLE = ['', 'phase-upcoming', 'phase-active', 'phase-complete'];
+
+// ── State ────────────────────────────────────────────────────
+let editMode = false;
+let lockTimer = null;
+
+// ── Init ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadTaskStatuses();
+  loadPhaseStates();
+  loadLastUpdated();
+});
+
+// ── Edit mode ────────────────────────────────────────────────
+function handleEditToggle() {
+  if (editMode) {
+    disableEditMode();
+  } else {
+    document.getElementById('modalOverlay').classList.add('visible');
+    setTimeout(() => document.getElementById('modalInput').focus(), 100);
+  }
+}
+
+function checkPassword() {
+  const input = document.getElementById('modalInput');
+  const error = document.getElementById('modalError');
+  if (input.value === PASSWORD) {
+    closeModal();
+    enableEditMode();
+  } else {
+    input.classList.add('error');
+    error.classList.add('visible');
+    input.value = '';
+    input.focus();
+    setTimeout(() => {
+      input.classList.remove('error');
+      error.classList.remove('visible');
+    }, 2500);
+  }
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('visible');
+  document.getElementById('modalInput').value = '';
+  document.getElementById('modalError').classList.remove('visible');
+  document.getElementById('modalInput').classList.remove('error');
+}
+
+function enableEditMode() {
+  editMode = true;
+  document.body.classList.add('edit-mode');
+  const toggle = document.getElementById('editToggle');
+  toggle.classList.add('active');
+  document.getElementById('editToggleLabel').textContent = 'Editing — click to lock';
+  lockTimer = setTimeout(disableEditMode, LOCK_AFTER_MINS * 60 * 1000);
+}
+
+function disableEditMode() {
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  const toggle = document.getElementById('editToggle');
+  toggle.classList.remove('active');
+  document.getElementById('editToggleLabel').textContent = 'Edit mode';
+  if (lockTimer) { clearTimeout(lockTimer); lockTimer = null; }
+}
+
+// ── Task status cycling ───────────────────────────────────────
+function cycleStatus(el) {
+  if (!editMode) return;
+  const taskId = el.dataset.taskId;
+  const current = STATUS_CYCLE.find(s => el.classList.contains(s)) || 'status-todo';
+  const nextIdx = (STATUS_CYCLE.indexOf(current) + 1) % STATUS_CYCLE.length;
+  const next = STATUS_CYCLE[nextIdx];
+
+  STATUS_CYCLE.forEach(s => el.classList.remove(s));
+  el.classList.add(next);
+  el.textContent = STATUS_LABELS[next];
+
+  const saved = getSavedStatuses();
+  saved[taskId] = next;
+  localStorage.setItem('ssf_task_statuses', JSON.stringify(saved));
+  saveLastUpdated();
+}
+
+function getSavedStatuses() {
+  try { return JSON.parse(localStorage.getItem('ssf_task_statuses') || '{}'); }
+  catch { return {}; }
+}
+
+function loadTaskStatuses() {
+  const saved = getSavedStatuses();
+  Object.entries(saved).forEach(([taskId, status]) => {
+    const el = document.querySelector(`[data-task-id="${taskId}"]`);
+    if (!el) return;
+    STATUS_CYCLE.forEach(s => el.classList.remove(s));
+    el.classList.add(status);
+    el.textContent = STATUS_LABELS[status] || status;
+  });
+}
+
+// ── Phase state cycling ───────────────────────────────────────
+function cyclePhase(el) {
+  if (!editMode) return;
+  const phaseId = el.dataset.phase;
+  const current = PHASE_CYCLE.find(s => s && el.classList.contains(s)) || '';
+  const nextIdx = (PHASE_CYCLE.indexOf(current) + 1) % PHASE_CYCLE.length;
+  const next = PHASE_CYCLE[nextIdx];
+
+  PHASE_CYCLE.forEach(s => { if(s) el.classList.remove(s); });
+  if (next) el.classList.add(next);
+  el.textContent = next === 'phase-complete' ? '✓' : phaseId;
+
+  const saved = getSavedPhases();
+  saved[phaseId] = next;
+  localStorage.setItem('ssf_phase_states', JSON.stringify(saved));
+  saveLastUpdated();
+}
+
+function getSavedPhases() {
+  try { return JSON.parse(localStorage.getItem('ssf_phase_states') || '{}'); }
+  catch { return {}; }
+}
+
+function loadPhaseStates() {
+  const saved = getSavedPhases();
+  Object.entries(saved).forEach(([phaseId, state]) => {
+    const el = document.querySelector(`[data-phase="${phaseId}"]`);
+    if (!el) return;
+    PHASE_CYCLE.forEach(s => { if(s) el.classList.remove(s); });
+    if (state) el.classList.add(state);
+    el.textContent = state === 'phase-complete' ? '✓' : phaseId;
+  });
+}
+
+// ── Last updated timestamp ────────────────────────────────────
+function saveLastUpdated() {
+  const now = new Date();
+  const formatted = now.toLocaleDateString('en-ZA', {
+    day:'numeric', month:'long', year:'numeric',
+    hour:'2-digit', minute:'2-digit'
+  });
+  localStorage.setItem('ssf_last_updated', formatted);
+  document.getElementById('lastUpdatedTime').textContent = formatted;
+}
+
+function loadLastUpdated() {
+  const saved = localStorage.getItem('ssf_last_updated');
+  if (saved) document.getElementById('lastUpdatedTime').textContent = saved;
+}
+
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.sb-nav a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`.sb-nav a[href="#${entry.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
+  });
+}, {rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
