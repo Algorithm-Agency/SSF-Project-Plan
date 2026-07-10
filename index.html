@@ -126,7 +126,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
 .team-card.external .team-list li::before{background:var(--amber);}
 
 /* ── Phase timeline ── */
-.timeline{position:relative;padding-left:40px;}
+.timeline{position:relative;padding-left:40px;margin-bottom:24px;}
 .timeline::before{content:'';position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--green));border-radius:2px;}
 .phase-item{position:relative;margin-bottom:24px;}
 .phase-item:last-child{margin-bottom:0;}
@@ -228,6 +228,22 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
 .fw-list li::before{content:'☐';position:absolute;left:0;color:var(--rule);font-size:13px;line-height:1;}
 .fw-list.check li::before{content:'';width:12px;height:12px;border:1.5px solid var(--rule);border-radius:3px;background:var(--white);top:3px;}
 .fw-list.dot li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);top:7px;}
+
+/* ── Legal Terms & Conditions ── */
+.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px;}
+.tc-block{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;}
+.tc-clause{margin-bottom:18px;}
+.tc-clause:last-child{margin-bottom:0;}
+.tc-clause h4{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.tc-clause p{font-size:12.5px;color:var(--grey);line-height:1.6;}
+.bank-box{background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin:10px 0 0;}
+.bank-box-title{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey-soft);margin-bottom:10px;}
+.bank-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--rule);gap:12px;}
+.bank-row:last-of-type{border-bottom:none;}
+.bank-row span{color:var(--grey-soft);}
+.bank-row strong{color:var(--ink);font-weight:600;text-align:right;}
+.bank-box-addr{font-size:11px;color:var(--grey-soft);margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.5;}
+@media(max-width:900px){.tc-grid{grid-template-columns:1fr;}}
 
 /* ── Weekly plan ── */
 .week-grid{display:grid;grid-template-columns:80px 1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:16px;}
@@ -385,6 +401,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <a href="#framework"><span class="num">7</span>Working with us</a>
       <a href="#weekly"><span class="num">8</span>Weekly plan</a>
       <a href="#taskboard"><span class="num">9</span>Task board</a>
+      <a href="#terms"><span class="num">10</span>Terms &amp; Conditions</a>
     </nav>
     <div class="sb-meta">
       <p><strong>Prepared by</strong><br>Ashlin — Head of Development</p>
@@ -510,7 +527,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
     <section class="section" id="delivery">
       <div class="section-eyebrow">Section 03 &middot; Project Delivery</div>
       <h2>Delivery phases — Sta-Sof-Fro</h2>
-      <p class="section-intro">3 paid phases over 6 weeks. Each phase is invoiced upfront — work does not begin on a phase until it's paid. The site is not deployed or made live until the final invoice is paid in full.</p>
+      <p class="section-intro">3 paid phases over 7 weeks. Each phase is invoiced upfront — work does not begin on a phase until it's paid. Design itself has two internal approval gates before build starts: a mock-up approval, then a final design approval. The site is not deployed or made live until the final invoice is paid in full.</p>
 
       <div class="timeline">
 
@@ -519,14 +536,17 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
           <div class="phase-card">
             <div class="phase-header">
               <div class="phase-title">Phase 1 — Design</div>
-              <div class="phase-week">Weeks 1&ndash;2</div>
+              <div class="phase-week">Weeks 1&ndash;3</div>
             </div>
             <div class="phase-tasks">
               <span class="phase-task" style="background:rgba(220,53,69,0.08);border-color:rgba(220,53,69,0.2);color:#DC3545;font-weight:600;">Final copy, photography & brand assets confirmed</span>
               <span class="phase-task">Figma designs confirmed as final</span>
               <span class="phase-task">Project kickoff meeting</span>
-              <span class="phase-task">UX/UI design — all 6 pages, mobile + desktop</span>
+              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Mock-up design — concept direction</span>
+              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Mock-up approval — client sign-off</span>
+              <span class="phase-task">Full UX/UI design — all 6 pages, mobile + desktop</span>
               <span class="phase-task">Typography system and component library</span>
+              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Final design approval — client sign-off</span>
               <span class="phase-task">One revision round included</span>
             </div>
             <div class="phase-footer">
@@ -541,7 +561,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
           <div class="phase-card">
             <div class="phase-header">
               <div class="phase-title">Phase 2 — Build</div>
-              <div class="phase-week">Weeks 3&ndash;5</div>
+              <div class="phase-week">Weeks 4&ndash;6</div>
             </div>
             <div class="phase-tasks">
               <span class="phase-task">Custom WordPress theme built from scratch</span>
@@ -563,7 +583,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
           <div class="phase-card">
             <div class="phase-header">
               <div class="phase-title">Phase 3 — Go-Live</div>
-              <div class="phase-week">Week 6</div>
+              <div class="phase-week">Week 7</div>
             </div>
             <div class="phase-tasks">
               <span class="phase-task">Page speed optimisation & WebP compression</span>
@@ -841,8 +861,8 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
     <!-- ── Section 8: Weekly Plan ── -->
     <section class="section" id="weekly">
       <div class="section-eyebrow">Section 08 &middot; Plan of Action</div>
-      <h2>Weekly plan — 6-week delivery</h2>
-      <p class="section-intro">What Ashlin and Luke are each working on week by week. Actual pacing depends on how quickly assets and feedback come back from your side.</p>
+      <h2>Weekly plan — 7-week delivery</h2>
+      <p class="section-intro">What Ashlin and Luke are each working on week by week. Design runs through two client approval gates — mock-up, then final design — before build begins. Actual pacing depends on how quickly assets and feedback come back from your side.</p>
 
       <div class="week-grid">
         <div class="week-col-head label">Week</div>
@@ -858,24 +878,37 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div class="week-task-item">Project kickoff meeting with client</div>
           </div>
           <div class="week-tasks luke-col">
-            <div class="week-task-item">Begin UX/UI design — Home & About wireframes</div>
+            <div class="week-task-item">Mock-up design — concept direction (homepage)</div>
           </div>
         </div>
 
         <div class="week-row">
           <div class="week-label">W2</div>
           <div class="week-tasks">
-            <div class="week-task-item">Review and approve design progress before client presentation</div>
+            <div class="week-task-item">Review mock-up before client presentation</div>
+            <div class="week-task-item milestone">→ Mock-up approval — client sign-off required to proceed</div>
           </div>
           <div class="week-tasks luke-col">
-            <div class="week-task-item">UX/UI design — Products, Product Detail, Hair Care, Blog Archive</div>
+            <div class="week-task-item">Present mock-up for client feedback</div>
+            <div class="week-task-item">Begin full UX/UI design — Home & About wireframes</div>
+          </div>
+        </div>
+
+        <div class="week-row">
+          <div class="week-label">W3</div>
+          <div class="week-tasks">
+            <div class="week-task-item">Review full design set before client presentation</div>
+            <div class="week-task-item milestone">→ Final design approval — client sign-off required before Phase 2 begins</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Full UX/UI design — Products, Product Detail, Hair Care, Blog Archive</div>
             <div class="week-task-item">Typography system and component library</div>
             <div class="week-task-item">One revision round on full design set</div>
           </div>
         </div>
 
         <div class="week-row">
-          <div class="week-label">W3</div>
+          <div class="week-label">W4</div>
           <div class="week-tasks">
             <div class="week-task-item milestone">→ Invoice 2 (35% — R32,375) paid before Phase 2 begins</div>
             <div class="week-task-item">Custom WordPress theme build — global styles, header, footer, nav</div>
@@ -886,7 +919,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W4</div>
+          <div class="week-label">W5</div>
           <div class="week-tasks">
             <div class="week-task-item">3 CF7 forms — styling, validation, routing logic</div>
           </div>
@@ -897,7 +930,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W5</div>
+          <div class="week-label">W6</div>
           <div class="week-tasks">
             <div class="week-task-item">Full site pushed to staging environment</div>
             <div class="week-task-item">Client review session — collect consolidated feedback</div>
@@ -909,7 +942,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W6</div>
+          <div class="week-label">W7</div>
           <div class="week-tasks">
             <div class="week-task-item milestone">→ Invoice 3 (25% — R23,125) paid before go-live</div>
             <div class="week-task-item">Page speed optimisation & WebP compression</div>
@@ -985,7 +1018,28 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 2 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 1 — Design (Design Work) &nbsp; Weeks 1–2</span>
+          <span>Phase 1 — Design (Mock-Up) &nbsp; Weeks 1–2</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row">
+            <div><div class="task-name">Mock-up design — concept direction</div><div class="task-note">Initial homepage concept to align on visual direction before full design.</div></div>
+            <div><span class="owner-badge owner-luke">Luke</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-mu1" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Assets confirmed</span></div>
+          </div>
+          <div class="task-row" style="background:rgba(46,124,246,0.03);">
+            <div><div class="task-name">Mock-up approval</div><div class="task-note">Client sign-off on concept direction. Full design work does not begin until this is approved.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-mu2" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--amber);">Mock-up delivered</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 1 — Design (Full Design) &nbsp; Weeks 2–3</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
@@ -993,7 +1047,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">UX/UI design — all 6 pages</div><div class="task-note">Wireframes and full designs across mobile and desktop. One revision round.</div></div>
             <div><span class="owner-badge owner-luke">Luke</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-05" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Assets confirmed</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Mock-up approved</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Typography system & component library</div><div class="task-note">Consistent type scale and reusable components across the site.</div></div>
@@ -1007,13 +1061,19 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><span class="status-badge status-todo" data-task-id="task-07" onclick="cycleStatus(this)">To do</span></div>
             <div><span style="font-size:11.5px;color:var(--grey);">After Luke completes design</span></div>
           </div>
+          <div class="task-row" style="background:rgba(46,124,246,0.03);">
+            <div><div class="task-name">Final design approval</div><div class="task-note">Client sign-off on the complete 6-page design set. Build does not begin until this is approved.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-mu3" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--amber);">Ashlin review complete</span></div>
+          </div>
         </div>
       </div>
 
       <!-- Phase 3 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 2 — Build (Theme &amp; Pages) &nbsp; Weeks 3–4</span>
+          <span>Phase 2 — Build (Theme &amp; Pages) &nbsp; Weeks 4–5</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
@@ -1021,7 +1081,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">Invoice 2 paid — R32,375 (35%)</div><div class="task-note">Must clear before any Phase 2 (Build) work begins.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-p2" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Phase 1 design approved</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Final design approved</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Custom WordPress theme</div><div class="task-note">Global styles, typography, colour variables, header, footer, navigation — built from scratch.</div></div>
@@ -1053,7 +1113,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 4 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 2 — Build (Staging) &nbsp; Week 5</span>
+          <span>Phase 2 — Build (Staging) &nbsp; Week 6</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
@@ -1081,7 +1141,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 5 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 3 — Go-Live &nbsp; Week 6</span>
+          <span>Phase 3 — Go-Live &nbsp; Week 7</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
@@ -1134,6 +1194,85 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
       </div>
 
+    </section>
+
+    <!-- ── Section 10: Terms & Conditions ── -->
+    <section class="section" id="terms">
+      <div class="section-eyebrow">Section 10 &middot; Terms &amp; Conditions</div>
+      <h2>Legal Terms &amp; Conditions</h2>
+      <p class="section-intro">These terms apply to the engagement set out above and form part of this Agreement.</p>
+
+      <div class="tc-grid">
+        <div class="tc-block">
+          <div class="tc-clause">
+            <h4>11.1 · Payment &amp; Banking</h4>
+            <p>Invoices are payable within 30 days from the date of invoice, except where phase-gated payment terms are specified elsewhere in this document, which take precedence for this engagement. Upfront payment is required for all media-related services. All payments to Algorithm Agency shall be made in full, without any deductions for bank charges, commissions, or any other expenses, which shall be the responsibility of the Client. Payments shall be made via bank transfer to the account details provided by Algorithm Agency, with all necessary bank transfer details communicated in writing. Algorithm Agency reserves the right to halt work if any invoice is overdue by 45 days or more.</p>
+
+            <div class="bank-box">
+              <div class="bank-box-title">Banking Details</div>
+              <div class="bank-row"><span>Account name</span><strong>SEO Agency (Pty) Ltd t/a Algorithm Agency</strong></div>
+              <div class="bank-row"><span>Bank</span><strong>First National Bank — Business Account</strong></div>
+              <div class="bank-row"><span>Account number</span><strong>62589606882</strong></div>
+              <div class="bank-row"><span>Branch code</span><strong>250655</strong></div>
+              <div class="bank-row"><span>Swift</span><strong>FIRNZAJJ</strong></div>
+              <div class="bank-row"><span>International routing</span><strong>250655</strong></div>
+              <div class="bank-box-addr">6th Floor, 1 First Place, Simmonds Street, Johannesburg, 2001, South Africa</div>
+            </div>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.2 · Term &amp; Termination</h4>
+            <p>This Agreement commences on the Effective Date and continues until the Website Build is delivered and signed off, unless terminated earlier as provided herein. Work on the engagement will not commence unless this proposal has been signed or a purchase order number has been received. Either party may terminate this Agreement at any time, for any reason, by providing the other party with 30 days' written notice. The Client compensates Algorithm Agency for all services performed up to the date of termination. No cancellation fees are due during the termination notice period. Upon termination, Algorithm Agency will promptly return to the Client all property, materials and documents produced or obtained in the course of providing the Services, within a reasonable timeframe.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.3 · Variations &amp; Change Control</h4>
+            <p>Any changes to this Agreement must be in writing and signed by both parties. Variations or amendments will be quoted separately and billed accordingly.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.4 · Algorithm Agency's Obligations</h4>
+            <p>Algorithm Agency shall uphold and protect the Client's image and reputation at all times, act in the best interests of the Client, attend required meetings to ensure alignment and progress, and make its resources available to assist the Client on matters directly related to the Services. Algorithm Agency will not release any information to the public or press without the Client's prior written approval.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.5 · Client's Obligations</h4>
+            <p>The Client will provide Algorithm Agency with all necessary information related to its operations and activities to enable Algorithm Agency to fulfil its obligations under this Agreement. For the duration of this Agreement and for one year thereafter, the Client agrees not to solicit or entice away employees, customers or suppliers of Algorithm Agency, except through general recruitment advertising.</p>
+          </div>
+        </div>
+
+        <div class="tc-block">
+          <div class="tc-clause">
+            <h4>11.6 · Intellectual Property</h4>
+            <p>All Intellectual Property Rights owned by either party prior to entering into this Agreement shall remain vested in that party.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.7 · Breach &amp; Dispute Resolution</h4>
+            <p>A material breach of this Agreement, if not remedied within 7 days of written notice, entitles the aggrieved party to cancel the Agreement and claim damages. Operational disputes shall first be addressed through consultation and negotiation within 14 days of the dispute's onset. Unresolved disputes will be submitted to arbitration in Johannesburg under AFSA rules; the arbitration process is confidential and its outcome final and binding.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.8 · Limitation of Liability</h4>
+            <p>Algorithm Agency will not be liable for any loss of use, interruption of business, lost profits, or any indirect, special, incidental or consequential damages of any kind, regardless of the form of action, whether in contract, tort (including negligence), strict product liability or otherwise. Even where Algorithm Agency has been advised of the possibility of such damages, its aggregate liability under this Agreement shall not exceed the fees paid by the Client hereunder.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.9 · Confidentiality</h4>
+            <p>Both parties agree to keep confidential all information acquired during the term of this Agreement and to return or destroy such information upon written request.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.10 · Governing Law</h4>
+            <p>This Agreement shall be governed by and construed in accordance with the laws of the Republic of South Africa.</p>
+          </div>
+
+          <div class="tc-clause">
+            <h4>11.11 · Protection of Personal Information (POPI)</h4>
+            <p>Algorithm Agency processes personal information lawfully, in a reasonable manner that does not infringe on privacy, and only where it is adequate, relevant and not excessive for the stated purpose. Personal information is processed only where: the data subject consents; processing is necessary to perform a contract; processing complies with a legal obligation; processing protects a legitimate interest of the data subject; processing is necessary for the proper performance of a public-law duty; or processing pursues the legitimate interests of Algorithm Agency or of a third party to whom the information is supplied. Algorithm Agency secures the integrity and confidentiality of personal information in its possession by taking appropriate, reasonable, technical and organisational measures to prevent loss, damage, unauthorised destruction, and unlawful access or processing. Risks are regularly identified, safeguards established and maintained, and safeguards continually updated in response to new risks. Any operator processing personal information on behalf of Algorithm Agency does so only with Algorithm Agency's authorisation, treats the information as confidential, and notifies Algorithm Agency immediately of any reasonably suspected unauthorised access or compromise.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>
