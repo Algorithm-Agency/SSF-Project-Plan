@@ -277,6 +277,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
 .owner-ashlin{background:rgba(46,124,246,0.1);color:var(--blue);}
 .owner-luke{background:rgba(22,163,106,0.1);color:var(--green);}
 .owner-both{background:rgba(91,155,255,0.1);color:var(--blue-soft);}
+.owner-daniel{background:rgba(224,138,44,0.1);color:var(--amber);}
 .status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;}
 .status-todo{background:#F3F5F9;color:var(--grey-soft);border:1px solid var(--rule);}
 .status-blocked{background:rgba(220,53,69,0.1);color:var(--red);border:1px solid rgba(220,53,69,0.2);}
@@ -488,7 +489,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <li>All client communication — single point of contact</li>
             <li>Custom WordPress theme build, CF7 forms, technical QA and launch</li>
             <li>Project ownership end to end, including milestone sign-off</li>
-            <li>Retainer discussion after launch, if and when relevant</li>
+            <li>Hands off to Daniel (Client Impact) for the retainer conversation after launch</li>
             <li>Escalation owner for all scope or technical issues</li>
           </ul>
         </div>
@@ -621,7 +622,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
               <span class="phase-task">3 tiers available if you want continued support</span>
             </div>
             <div class="phase-footer">
-              <div class="phase-owner"><strong>Owner:</strong> Ashlin</div>
+              <div class="phase-owner"><strong>Owner:</strong> Daniel (Client Impact)</div>
               <div class="milestone-tag amber">Not yet confirmed — outside the 3 paid phases</div>
             </div>
           </div>
@@ -894,7 +895,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         <div class="week-row">
           <div class="week-label">W1</div>
           <div class="week-tasks">
-            <div class="week-task-item milestone">→ Invoice 1 (40% — R37,000) paid before Phase 2 begins</div>
+            <div class="week-task-item milestone">→ Invoice 1 (40% — R37,000) due before Phase 2 begins</div>
             <div class="week-task-item">Confirm Figma designs as final</div>
             <div class="week-task-item">Collect final copy, photography, brand assets</div>
             <div class="week-task-item">Project kickoff meeting with client</div>
@@ -920,7 +921,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         <div class="week-row">
           <div class="week-label">W3</div>
           <div class="week-tasks">
-            <div class="week-task-item milestone">→ Invoice 2 (35% — R32,375) paid before Phase 3 begins</div>
+            <div class="week-task-item milestone">→ Invoice 2 (35% — R32,375) due before Phase 3 begins</div>
             <div class="week-task-item">Custom WordPress theme build — global styles, header, footer, nav</div>
           </div>
           <div class="week-tasks luke-col">
@@ -954,11 +955,11 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         <div class="week-row">
           <div class="week-label">W6</div>
           <div class="week-tasks">
-            <div class="week-task-item milestone">→ Invoice 3 (25% — R23,125) paid before go-live</div>
+            <div class="week-task-item milestone">→ Invoice 3 (25% — R23,125) due before go-live</div>
             <div class="week-task-item">Page speed optimisation & WebP compression</div>
             <div class="week-task-item">Sitemap and robots.txt configuration</div>
             <div class="week-task-item">Staging-to-live deployment — only once Invoice 3 clears</div>
-            <div class="week-task-item">Retainer conversation — optional, no obligation</div>
+            <div class="week-task-item">Retainer conversation (Daniel, Client Impact) — optional, no obligation</div>
           </div>
           <div class="week-tasks luke-col">
             <div class="week-task-item">Final cross-device QA on live server post-deployment</div>
@@ -1015,7 +1016,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
         <div class="taskboard-body">
           <div class="task-row" style="background:rgba(46,124,246,0.03);">
-            <div><div class="task-name">Invoice 1 paid — R37,000 (40%)</div><div class="task-note">Must clear before any Phase 2 work begins.</div></div>
+            <div><div class="task-name">Invoice 1 due — R37,000 (40%)</div><div class="task-note">Must clear before any Phase 2 work begins.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-p1" onclick="cycleStatus(this)">To do</span></div>
             <div><span style="font-size:11.5px;color:var(--grey);">Mock-up approved</span></div>
@@ -1024,13 +1025,13 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">Final copy, photography & brand assets</div><div class="task-note">All final content confirmed before design work begins.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-01" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--amber);">Invoice 1 paid</span></div>
+            <div><span style="font-size:11.5px;color:var(--amber);">Invoice 1 due</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Figma designs confirmed as final</div><div class="task-note">Sign-off on the reference designs before UX/UI work begins.</div></div>
             <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-02" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 1 paid</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 1 due</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Form purposes defined</div><div class="task-note">Contact, Trade/Retail Enquiry, General Enquiry — confirmed at kickoff.</div></div>
@@ -1042,7 +1043,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">Project kickoff with client</div><div class="task-note">Confirm scope, timeline, feedback process, and revision rounds.</div></div>
             <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-04" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 1 paid</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 1 due</span></div>
           </div>
         </div>
       </div>
@@ -1088,7 +1089,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
         <div class="taskboard-body">
           <div class="task-row" style="background:rgba(22,163,106,0.03);">
-            <div><div class="task-name">Invoice 2 paid — R32,375 (35%)</div><div class="task-note">Must clear before any Phase 3 (Build) work begins.</div></div>
+            <div><div class="task-name">Invoice 2 due — R32,375 (35%)</div><div class="task-note">Must clear before any Phase 3 (Build) work begins.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-p2" onclick="cycleStatus(this)">To do</span></div>
             <div><span style="font-size:11.5px;color:var(--grey);">Final design approved</span></div>
@@ -1097,7 +1098,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">Custom WordPress theme</div><div class="task-note">Global styles, typography, colour variables, header, footer, navigation — built from scratch.</div></div>
             <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-08" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 2 paid</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 2 due</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">6 Elementor page builds</div><div class="task-note">Home, About Us, Products Listing, Product Detail, Hair Care & Sustainability, Blog Archive.</div></div>
@@ -1156,7 +1157,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
         <div class="taskboard-body">
           <div class="task-row" style="background:rgba(224,138,44,0.05);">
-            <div><div class="task-name">Invoice 3 paid — R23,125 (25%)</div><div class="task-note">Must clear before go-live tasks begin. Site stays on staging until paid.</div></div>
+            <div><div class="task-name">Invoice 3 due — R23,125 (25%)</div><div class="task-note">Must clear before go-live tasks begin. Site stays on staging until paid.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-p3" onclick="cycleStatus(this)">To do</span></div>
             <div><span style="font-size:11.5px;color:var(--grey);">Staging approved by client</span></div>
@@ -1165,7 +1166,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">Page speed & WebP compression</div><div class="task-note">Performance tuning across all 6 pages.</div></div>
             <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-15" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 3 paid</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Invoice 3 due</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Sitemap & robots.txt configuration</div><div class="task-note">Technical SEO housekeeping ahead of launch.</div></div>
@@ -1183,7 +1184,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">Staging-to-live deployment</div><div class="task-note">Final go-live and sign-off.</div></div>
             <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-18" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">QA complete & Invoice 3 paid</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">QA complete & Invoice 3 due</span></div>
           </div>
         </div>
       </div>
@@ -1197,7 +1198,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         <div class="taskboard-body">
           <div class="task-row">
             <div><div class="task-name">Retainer conversation</div><div class="task-note">Optional check-in on whether ongoing support makes sense. No obligation.</div></div>
-            <div><span class="owner-badge owner-ashlin">Ashlin</span></div>
+            <div><span class="owner-badge owner-daniel">Daniel</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-19" onclick="cycleStatus(this)">To do</span></div>
             <div><span style="font-size:11.5px;color:var(--amber);">Not yet confirmed</span></div>
           </div>
