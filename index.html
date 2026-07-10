@@ -521,7 +521,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
     <section class="section" id="delivery">
       <div class="section-eyebrow">Section 03 &middot; Project Delivery</div>
       <h2>Delivery phases — Sta-Sof-Fro</h2>
-      <p class="section-intro">3 paid phases over 7 weeks. Each phase is invoiced upfront — work does not begin on a phase until it's paid. Design itself has two internal approval gates before build starts: a mock-up approval, then a final design approval. The site is not deployed or made live until the final invoice is paid in full.</p>
+      <p class="section-intro">Mock-up approval happens first, before kickoff and before any invoice is raised — so you've signed off on the direction before committing to the project. From there, 3 paid phases run over 6 weeks: each is invoiced upfront, work doesn't begin on a phase until it's paid, and the site isn't deployed until the final invoice clears.</p>
 
       <div class="timeline">
 
@@ -529,23 +529,16 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
           <div class="phase-node" data-phase="1" onclick="cyclePhase(this)">1</div>
           <div class="phase-card">
             <div class="phase-header">
-              <div class="phase-title">Phase 1 — Design</div>
-              <div class="phase-week">Weeks 1&ndash;3</div>
+              <div class="phase-title">Phase 1 — Mock-Up</div>
+              <div class="phase-week">Pre-Kickoff</div>
             </div>
             <div class="phase-tasks">
-              <span class="phase-task" style="background:rgba(220,53,69,0.08);border-color:rgba(220,53,69,0.2);color:#DC3545;font-weight:600;">Final copy, photography & brand assets confirmed</span>
-              <span class="phase-task">Figma designs confirmed as final</span>
-              <span class="phase-task">Project kickoff meeting</span>
-              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Mock-up design — concept direction</span>
+              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Mock-up design — concept direction (homepage)</span>
               <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Mock-up approval — client sign-off</span>
-              <span class="phase-task">Full UX/UI design — all 6 pages, mobile + desktop</span>
-              <span class="phase-task">Typography system and component library</span>
-              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Final design approval — client sign-off</span>
-              <span class="phase-task">One revision round included</span>
             </div>
             <div class="phase-footer">
               <div class="phase-owner"><strong>Design:</strong> Luke &nbsp;&middot;&nbsp; <strong>Review &amp; client contact:</strong> Ashlin</div>
-              <div class="milestone-tag">Invoice 1 — R37,000 (40%) due before Phase 1 begins</div>
+              <div class="milestone-tag amber">No invoice — free concept check before kickoff</div>
             </div>
           </div>
         </div>
@@ -554,8 +547,31 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
           <div class="phase-node" data-phase="2" onclick="cyclePhase(this)">2</div>
           <div class="phase-card">
             <div class="phase-header">
-              <div class="phase-title">Phase 2 — Build</div>
-              <div class="phase-week">Weeks 4&ndash;6</div>
+              <div class="phase-title">Phase 2 — Design</div>
+              <div class="phase-week">Weeks 1&ndash;2</div>
+            </div>
+            <div class="phase-tasks">
+              <span class="phase-task" style="background:rgba(220,53,69,0.08);border-color:rgba(220,53,69,0.2);color:#DC3545;font-weight:600;">Final copy, photography & brand assets confirmed</span>
+              <span class="phase-task">Figma designs confirmed as final</span>
+              <span class="phase-task">Project kickoff meeting</span>
+              <span class="phase-task">Full UX/UI design — all 6 pages, mobile + desktop</span>
+              <span class="phase-task">Typography system and component library</span>
+              <span class="phase-task">One revision round included</span>
+              <span class="phase-task" style="background:rgba(46,124,246,0.08);border-color:rgba(46,124,246,0.2);color:var(--blue);font-weight:600;">Final design approval — client sign-off</span>
+            </div>
+            <div class="phase-footer">
+              <div class="phase-owner"><strong>Design:</strong> Luke &nbsp;&middot;&nbsp; <strong>Review &amp; client contact:</strong> Ashlin</div>
+              <div class="milestone-tag">Invoice 1 — R37,000 (40%) due before Phase 2 begins</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-item">
+          <div class="phase-node" data-phase="3" onclick="cyclePhase(this)">3</div>
+          <div class="phase-card">
+            <div class="phase-header">
+              <div class="phase-title">Phase 3 — Build</div>
+              <div class="phase-week">Weeks 3&ndash;5</div>
             </div>
             <div class="phase-tasks">
               <span class="phase-task">Custom WordPress theme built from scratch</span>
@@ -567,17 +583,17 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             </div>
             <div class="phase-footer">
               <div class="phase-owner"><strong>Owner:</strong> Ashlin &nbsp;&middot;&nbsp; <strong>Front-end build:</strong> Luke</div>
-              <div class="milestone-tag green">Invoice 2 — R32,375 (35%) due before Phase 2 begins</div>
+              <div class="milestone-tag green">Invoice 2 — R32,375 (35%) due before Phase 3 begins</div>
             </div>
           </div>
         </div>
 
         <div class="phase-item phase-qa">
-          <div class="phase-node" data-phase="3" onclick="cyclePhase(this)">3</div>
+          <div class="phase-node" data-phase="4" onclick="cyclePhase(this)">4</div>
           <div class="phase-card">
             <div class="phase-header">
-              <div class="phase-title">Phase 3 — Go-Live</div>
-              <div class="phase-week">Week 7</div>
+              <div class="phase-title">Phase 4 — Go-Live</div>
+              <div class="phase-week">Week 6</div>
             </div>
             <div class="phase-tasks">
               <span class="phase-task">Page speed optimisation & WebP compression</span>
@@ -593,7 +609,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="phase-item phase-retainer">
-          <div class="phase-node" data-phase="4" onclick="cyclePhase(this)">4</div>
+          <div class="phase-node" data-phase="5" onclick="cyclePhase(this)">5</div>
           <div class="phase-card">
             <div class="phase-header">
               <div class="phase-title">Post-launch — retainer optional</div>
@@ -615,7 +631,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
 
       <div class="callout dark">
         <h3>Payment &amp; go-live policy</h3>
-        <p>Each of the 3 phases above is invoiced upfront. We do not start work on a phase until that phase's invoice is paid in full, and invoices are never raised retroactively for work already done. This applies to go-live too — the completed site stays on staging until Invoice 3 clears, so there's no scenario where the site goes live before payment is received.</p>
+        <p>The mock-up stage is free and comes before any invoice — you approve the direction before committing to anything. From Phase 2 onward, each of the 3 paid phases is invoiced upfront. We do not start work on a phase until that phase's invoice is paid in full, and invoices are never raised retroactively for work already done. This applies to go-live too — the completed site stays on staging until Invoice 3 clears, so there's no scenario where the site goes live before payment is received.</p>
       </div>
     </section>
 
@@ -855,8 +871,8 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
     <!-- ── Section 8: Weekly Plan ── -->
     <section class="section" id="weekly">
       <div class="section-eyebrow">Section 08 &middot; Plan of Action</div>
-      <h2>Weekly plan — 7-week delivery</h2>
-      <p class="section-intro">What Ashlin and Luke are each working on week by week. Design runs through two client approval gates — mock-up, then final design — before build begins. Actual pacing depends on how quickly assets and feedback come back from your side.</p>
+      <h2>Weekly plan — 6-week delivery (+ mock-up pre-kickoff)</h2>
+      <p class="section-intro">Mock-up approval happens before the paid clock starts. From kickoff, it's a 6-week paid delivery. Actual pacing depends on how quickly assets and feedback come back from your side.</p>
 
       <div class="week-grid">
         <div class="week-col-head label">Week</div>
@@ -864,35 +880,35 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         <div class="week-col-head luke">Luke — Design & front-end</div>
 
         <div class="week-row">
+          <div class="week-label">Pre</div>
+          <div class="week-tasks">
+            <div class="week-task-item">Review mock-up before client presentation</div>
+            <div class="week-task-item milestone">→ Mock-up approval — client sign-off required before kickoff</div>
+          </div>
+          <div class="week-tasks luke-col">
+            <div class="week-task-item">Mock-up design — concept direction (homepage)</div>
+            <div class="week-task-item">Present mock-up for client feedback</div>
+          </div>
+        </div>
+
+        <div class="week-row">
           <div class="week-label">W1</div>
           <div class="week-tasks">
-            <div class="week-task-item milestone">→ Invoice 1 (40% — R37,000) paid before Phase 1 begins</div>
+            <div class="week-task-item milestone">→ Invoice 1 (40% — R37,000) paid before Phase 2 begins</div>
             <div class="week-task-item">Confirm Figma designs as final</div>
             <div class="week-task-item">Collect final copy, photography, brand assets</div>
             <div class="week-task-item">Project kickoff meeting with client</div>
           </div>
           <div class="week-tasks luke-col">
-            <div class="week-task-item">Mock-up design — concept direction (homepage)</div>
+            <div class="week-task-item">Begin full UX/UI design — Home & About wireframes</div>
           </div>
         </div>
 
         <div class="week-row">
           <div class="week-label">W2</div>
           <div class="week-tasks">
-            <div class="week-task-item">Review mock-up before client presentation</div>
-            <div class="week-task-item milestone">→ Mock-up approval — client sign-off required to proceed</div>
-          </div>
-          <div class="week-tasks luke-col">
-            <div class="week-task-item">Present mock-up for client feedback</div>
-            <div class="week-task-item">Begin full UX/UI design — Home & About wireframes</div>
-          </div>
-        </div>
-
-        <div class="week-row">
-          <div class="week-label">W3</div>
-          <div class="week-tasks">
             <div class="week-task-item">Review full design set before client presentation</div>
-            <div class="week-task-item milestone">→ Final design approval — client sign-off required before Phase 2 begins</div>
+            <div class="week-task-item milestone">→ Final design approval — client sign-off required before Phase 3 begins</div>
           </div>
           <div class="week-tasks luke-col">
             <div class="week-task-item">Full UX/UI design — Products, Product Detail, Hair Care, Blog Archive</div>
@@ -902,9 +918,9 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W4</div>
+          <div class="week-label">W3</div>
           <div class="week-tasks">
-            <div class="week-task-item milestone">→ Invoice 2 (35% — R32,375) paid before Phase 2 begins</div>
+            <div class="week-task-item milestone">→ Invoice 2 (35% — R32,375) paid before Phase 3 begins</div>
             <div class="week-task-item">Custom WordPress theme build — global styles, header, footer, nav</div>
           </div>
           <div class="week-tasks luke-col">
@@ -913,7 +929,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W5</div>
+          <div class="week-label">W4</div>
           <div class="week-tasks">
             <div class="week-task-item">3 CF7 forms — styling, validation, routing logic</div>
           </div>
@@ -924,7 +940,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W6</div>
+          <div class="week-label">W5</div>
           <div class="week-tasks">
             <div class="week-task-item">Full site pushed to staging environment</div>
             <div class="week-task-item">Client review session — collect consolidated feedback</div>
@@ -936,7 +952,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
 
         <div class="week-row">
-          <div class="week-label">W7</div>
+          <div class="week-label">W6</div>
           <div class="week-tasks">
             <div class="week-task-item milestone">→ Invoice 3 (25% — R23,125) paid before go-live</div>
             <div class="week-task-item">Page speed optimisation & WebP compression</div>
@@ -972,15 +988,37 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 1 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 1 — Design (Discovery & Kickoff) &nbsp; Week 1</span>
+          <span>Phase 1 — Mock-Up &nbsp; Pre-Kickoff</span>
+          <span>Owner</span><span>Status</span><span>Dependency</span>
+        </div>
+        <div class="taskboard-body">
+          <div class="task-row">
+            <div><div class="task-name">Mock-up design — concept direction</div><div class="task-note">Initial homepage concept to align on visual direction, before kickoff or any invoice.</div></div>
+            <div><span class="owner-badge owner-luke">Luke</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-mu1" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">None — first task</span></div>
+          </div>
+          <div class="task-row" style="background:rgba(46,124,246,0.03);">
+            <div><div class="task-name">Mock-up approval</div><div class="task-note">Client sign-off on concept direction. Kickoff and Invoice 1 do not happen until this is approved.</div></div>
+            <div><span class="owner-badge owner-both">SSF</span></div>
+            <div><span class="status-badge status-todo" data-task-id="task-mu2" onclick="cycleStatus(this)">To do</span></div>
+            <div><span style="font-size:11.5px;color:var(--amber);">Mock-up delivered</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="taskboard-section">
+        <div class="taskboard-head">
+          <span>Phase 2 — Design (Discovery & Kickoff) &nbsp; Week 1</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
           <div class="task-row" style="background:rgba(46,124,246,0.03);">
-            <div><div class="task-name">Invoice 1 paid — R37,000 (40%)</div><div class="task-note">Must clear before any Phase 1 work begins.</div></div>
+            <div><div class="task-name">Invoice 1 paid — R37,000 (40%)</div><div class="task-note">Must clear before any Phase 2 work begins.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-p1" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">None — first task</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Mock-up approved</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Final copy, photography & brand assets</div><div class="task-note">All final content confirmed before design work begins.</div></div>
@@ -1009,31 +1047,9 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
         </div>
       </div>
 
-      <!-- Phase 2 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 1 — Design (Mock-Up) &nbsp; Weeks 1–2</span>
-          <span>Owner</span><span>Status</span><span>Dependency</span>
-        </div>
-        <div class="taskboard-body">
-          <div class="task-row">
-            <div><div class="task-name">Mock-up design — concept direction</div><div class="task-note">Initial homepage concept to align on visual direction before full design.</div></div>
-            <div><span class="owner-badge owner-luke">Luke</span></div>
-            <div><span class="status-badge status-todo" data-task-id="task-mu1" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Assets confirmed</span></div>
-          </div>
-          <div class="task-row" style="background:rgba(46,124,246,0.03);">
-            <div><div class="task-name">Mock-up approval</div><div class="task-note">Client sign-off on concept direction. Full design work does not begin until this is approved.</div></div>
-            <div><span class="owner-badge owner-both">SSF</span></div>
-            <div><span class="status-badge status-todo" data-task-id="task-mu2" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--amber);">Mock-up delivered</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="taskboard-section">
-        <div class="taskboard-head">
-          <span>Phase 1 — Design (Full Design) &nbsp; Weeks 2–3</span>
+          <span>Phase 2 — Design (Full Design) &nbsp; Weeks 1–2</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
@@ -1041,7 +1057,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
             <div><div class="task-name">UX/UI design — all 6 pages</div><div class="task-note">Wireframes and full designs across mobile and desktop. One revision round.</div></div>
             <div><span class="owner-badge owner-luke">Luke</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-05" onclick="cycleStatus(this)">To do</span></div>
-            <div><span style="font-size:11.5px;color:var(--grey);">Mock-up approved</span></div>
+            <div><span style="font-size:11.5px;color:var(--grey);">Kickoff complete</span></div>
           </div>
           <div class="task-row">
             <div><div class="task-name">Typography system & component library</div><div class="task-note">Consistent type scale and reusable components across the site.</div></div>
@@ -1067,12 +1083,12 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 3 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 2 — Build (Theme &amp; Pages) &nbsp; Weeks 4–5</span>
+          <span>Phase 3 — Build (Theme &amp; Pages) &nbsp; Weeks 3–4</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
           <div class="task-row" style="background:rgba(22,163,106,0.03);">
-            <div><div class="task-name">Invoice 2 paid — R32,375 (35%)</div><div class="task-note">Must clear before any Phase 2 (Build) work begins.</div></div>
+            <div><div class="task-name">Invoice 2 paid — R32,375 (35%)</div><div class="task-note">Must clear before any Phase 3 (Build) work begins.</div></div>
             <div><span class="owner-badge owner-both">SSF</span></div>
             <div><span class="status-badge status-todo" data-task-id="task-p2" onclick="cycleStatus(this)">To do</span></div>
             <div><span style="font-size:11.5px;color:var(--grey);">Final design approved</span></div>
@@ -1107,7 +1123,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 4 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 2 — Build (Staging) &nbsp; Week 6</span>
+          <span>Phase 3 — Build (Staging) &nbsp; Week 5</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
@@ -1135,7 +1151,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);font-s
       <!-- Phase 5 -->
       <div class="taskboard-section">
         <div class="taskboard-head">
-          <span>Phase 3 — Go-Live &nbsp; Week 7</span>
+          <span>Phase 4 — Go-Live &nbsp; Week 6</span>
           <span>Owner</span><span>Status</span><span>Dependency</span>
         </div>
         <div class="taskboard-body">
